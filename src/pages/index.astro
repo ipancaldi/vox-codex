@@ -12,62 +12,42 @@ const stories = await getCollection('stories');
 <BaseLayout title="A welcoming community choir in Holloway">
   <section class="hero">
     <div class="hero__copy">
-      <p class="eyebrow">North London community choir</p>
-      <h1>
-        <span>Stop wondering</span>
-        <span>if you can sing.</span>
-        <span>Start making it.</span>
-      </h1>
-      <p>
-        VOX Holloway brings people together to sing ambitious music in a generous, inclusive room.
-        No auditions, no previous choir experience needed.
-      </p>
-      <div class="hero__actions">
-        <a class="button button-primary" href="/join/">Join the choir</a>
-        <a class="button button-secondary" href="/events/">See events</a>
+      <div class="hero__statement">
+        <div>
+          <h1>Stop wondering about it.</h1>
+          <p>Warm, ambitious community singing in Holloway, open to new voices and built around belonging.</p>
+        </div>
+        <div class="hero__script" aria-label="Start making it.">
+          <span>Start</span>
+          <span>Making it.</span>
+        </div>
       </div>
     </div>
     <div class="hero__media">
       <img src="/images/community-choir.jpg" alt="Illustration of a diverse community choir singing together" />
-    </div>
-    <div class="hero__ticker" aria-label="Choir highlights">
-      <div>
-        <span>100+ voices</span>
-        <span>No auditions</span>
-        <span>Tuesday rehearsals</span>
-        <span>Holloway, London</span>
-        <span>New singers welcome</span>
-      </div>
-      <div aria-hidden="true">
-        <span>100+ voices</span>
-        <span>No auditions</span>
-        <span>Tuesday rehearsals</span>
-        <span>Holloway, London</span>
-        <span>New singers welcome</span>
-      </div>
+      <a class="media-control media-control--left" href="/join/" aria-label="Join VOX">▶</a>
+      <a class="media-control media-control--right" href="/events/" aria-label="See events">♪</a>
     </div>
   </section>
 
-  <section class="section section-punch">
-    <div class="section-header">
+  <section class="case-section">
+    <div class="mini-heading">
       <p class="eyebrow">Start here</p>
-      <h2>Join. Listen. Support. Bring someone with you.</h2>
-      <div class="hero__notes" aria-label="Choir highlights">
-        <span>Open, friendly, community-led</span>
-        <span>Built for confidence</span>
-        <span>Made for ambitious music</span>
-      </div>
+      <a href="/events/">View all</a>
     </div>
-    <div class="grid cards">
+    <div class="case-grid">
       <article class="info-card">
+        <img src="/images/community-choir.jpg" alt="" />
         <h3>Join the choir</h3>
         <p>Come to an open rehearsal, meet the group, and find your voice at your own pace.</p>
       </article>
       <article class="info-card">
+        <img src="/images/beach-boys.jpg" alt="" />
         <h3>Come to events</h3>
         <p>Find upcoming concerts, open rehearsals, community performances, and seasonal projects.</p>
       </article>
       <article class="info-card">
+        <img src="/images/vox_logo.svg" alt="" />
         <h3>Support the work</h3>
         <p>Buy merch, donate, or help us keep ambitious music open to more singers.</p>
       </article>
@@ -93,8 +73,8 @@ const stories = await getCollection('stories');
 
   <section class="section service-section">
     <div class="section-header">
-      <p class="eyebrow">Belonging first</p>
-      <h2>Welcoming does not mean watered down.</h2>
+      <p class="eyebrow">What we do</p>
+      <h2>Music, community, performance and confidence.</h2>
       <p>VOX is built for people who want community and challenge in the same room.</p>
     </div>
     <div class="service-list">
@@ -111,6 +91,22 @@ const stories = await getCollection('stories');
         <p>The choir takes on ambitious repertoire, collaborations, and concerts with heart.</p>
       </article>
     </div>
+  </section>
+
+  <section class="testimonial-panel">
+    <p class="eyebrow">VOX Holloway</p>
+    <blockquote>
+      “No auditions meant I could just show up. The music is ambitious, but the people make it feel possible.”
+    </blockquote>
+    <p>Tom, Bass</p>
+  </section>
+
+  <section class="logo-strip" aria-label="VOX highlights">
+    <span>No auditions</span>
+    <span>Open rehearsals</span>
+    <span>North London</span>
+    <span>Big concerts</span>
+    <span>Community voices</span>
   </section>
 
   <section class="section story-section">
@@ -134,34 +130,22 @@ const stories = await getCollection('stories');
     </div>
   </section>
 
-  <section class="marquee-section" aria-label="What VOX is about">
-    <div class="marquee-track">
-      <span>Community</span>
-      <span>Harmony</span>
-      <span>Confidence</span>
-      <span>Performance</span>
-      <span>Belonging</span>
-      <span>North London</span>
-    </div>
-    <div class="marquee-track marquee-track--reverse" aria-hidden="true">
-      <span>No auditions</span>
-      <span>New music</span>
-      <span>Big concerts</span>
-      <span>Open rehearsals</span>
-      <span>Support VOX</span>
-      <span>Sing together</span>
-    </div>
-  </section>
-
-  <section class="feature-band">
-    <div class="feature-band__copy">
-      <p class="eyebrow">Ready when you are</p>
-      <h2>Come and sing with us.</h2>
-      <p>The join journey should be simple: read what to expect, ask a question if you need to, then come along to a rehearsal.</p>
-      <a class="button button-primary" href="/join/">Start joining</a>
-    </div>
-    <div class="feature-band__image">
-      <img src="/images/beach-boys.jpg" alt="" />
+  <section class="industries-section">
+    <p class="eyebrow">Who we sing with</p>
+    <h2>From first-timers to lifelong singers, we make space for different voices.</h2>
+    <div class="industry-grid">
+      <span>Altos</span>
+      <span>Sopranos</span>
+      <span>Tenors</span>
+      <span>Basses</span>
+      <span>New singers</span>
+      <span>Returning singers</span>
+      <span>Local supporters</span>
+      <span>Guest musicians</span>
+      <span>Audience members</span>
+      <span>Volunteers</span>
+      <span>Donors</span>
+      <span>Neighbours</span>
     </div>
   </section>
 </BaseLayout>
