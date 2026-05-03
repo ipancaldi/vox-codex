@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EventCard from '../components/EventCard.astro';
 
 const events = (await getCollection('events'))
   .filter((event) => event.data.status === 'upcoming')
@@ -17,10 +16,10 @@ const stories = await getCollection('stories');
     </div>
     <div class="hero__copy">
       <p class="eyebrow">North London community choir</p>
-      <h1>Sing with VOX Holloway.</h1>
+      <h1>A community choir for bold, welcoming voices.</h1>
       <p>
-        A warm, ambitious choir for people who want to sing, belong, and make something beautiful together.
-        No auditions. No previous choir experience needed.
+        VOX Holloway brings people together to sing ambitious music in a generous, inclusive room.
+        No auditions, no previous choir experience needed.
       </p>
       <div class="hero__actions">
         <a class="button button-primary" href="/join/">Join the choir</a>
@@ -103,11 +102,16 @@ const stories = await getCollection('stories');
     <div class="grid cards">
       {stories.map((story) => (
         <article class="story-card">
+          {story.data.image && <img src={story.data.image} alt="" loading="lazy" />}
           <p>"{story.data.quote}"</p>
           <h3>{story.data.name}</h3>
           {story.data.role && <p>{story.data.role}</p>}
+          <a href={`/stories/${story.slug}/`}>Read story</a>
         </article>
       ))}
+    </div>
+    <div class="section-action">
+      <a class="button button-secondary" href="/stories/">All choir stories</a>
     </div>
   </section>
 

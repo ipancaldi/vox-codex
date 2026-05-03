@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+export async function getStaticPaths() {
+  const stories = await getCollection('stories');
+  return stories.map((story) => ({
+    params: { slug: story.slug },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+const { Content } = await story.render();
+---
+
+<BaseLayout title={story.data.name} description={story.data.quote}>
+  <PageHero
+    eyebrow={story.data.role ?? 'Choir story'}
+    title={story.data.name}
+    text={story.data.quote}
+    image={story.data.image ?? '/images/community-choir.jpg'}
+  />
+  <article class="prose">
+    <Content />
+  </article>
+</BaseLayout>

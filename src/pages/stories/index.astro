@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const stories = await getCollection('stories');
+---
+
+<BaseLayout title="Choir Stories">
+  <PageHero
+    eyebrow="Choir stories"
+    title="The people who make the sound."
+    text="Stories from VOX singers, showing what it feels like to arrive, learn, sing, and belong."
+    image="/images/community-choir.jpg"
+  />
+  <section class="section section-tight">
+    <div class="grid cards">
+      {stories.map((story) => (
+        <article class="story-card story-card--feature">
+          {story.data.image && <img src={story.data.image} alt="" loading="lazy" />}
+          <p>"{story.data.quote}"</p>
+          <h2>{story.data.name}</h2>
+          {story.data.role && <p>{story.data.role}</p>}
+          <a href={`/stories/${story.slug}/`}>Read story</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

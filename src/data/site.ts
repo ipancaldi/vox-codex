@@ -2,6 +2,7 @@ export const navigation = [
   { label: 'Join Us', href: '/join/' },
   { label: 'Events', href: '/events/' },
   { label: 'About', href: '/about/' },
+  { label: 'Stories', href: '/stories/' },
   { label: 'Support', href: '/support/' },
   { label: 'Merch', href: '/merch/' },
   { label: 'Contact', href: '/contact/' },
