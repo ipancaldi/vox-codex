@@ -1,0 +1,18 @@
+---
+const { event } = Astro.props;
+const date = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(event.data.date);
+---
+
+<article class="event-card">
+  <img src={event.data.image} alt="" loading="lazy" />
+  <div>
+    <p class="eyebrow">{date} - {event.data.time}</p>
+    <h2><a href={`/events/${event.slug}/`}>{event.data.title}</a></h2>
+    <p>{event.data.summary}</p>
+    <p class="meta">{event.data.venue}</p>
+  </div>
+</article>

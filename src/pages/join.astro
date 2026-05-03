@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Join Us">
+  <PageHero
+    eyebrow="Join the choir"
+    title="No audition. Just come and sing."
+    text="VOX Holloway welcomes new singers with or without choir experience. You do not need to read music, and you do not need to know your voice part before you arrive."
+    image="/images/community-choir.jpg"
+    ctaLabel="Email us about joining"
+    ctaHref="mailto:hello@voxholloway.com?subject=Joining VOX Holloway"
+  />
+  <section class="section section-tight">
+    <div class="grid cards">
+      <article class="info-card">
+        <h3>1. Say hello</h3>
+        <p>Send us a quick message and we will tell you when the next open rehearsal is happening.</p>
+      </article>
+      <article class="info-card">
+        <h3>2. Try a rehearsal</h3>
+        <p>Come along, listen, join in, and meet the choir. There is no pressure to know everything straight away.</p>
+      </article>
+      <article class="info-card">
+        <h3>3. Stay for the term</h3>
+        <p>If it feels right, we will help you settle into the current project and get access to rehearsal materials.</p>
+      </article>
+    </div>
+  </section>
+  <section class="prose">
+    <h1>What to expect</h1>
+    <p>Rehearsals are friendly, focused, and full of people learning together. Bring water, a pencil, and a willingness to make sound before everything is perfect.</p>
+    <p>VOX is especially suited to singers who want community, consistency, and the joy of working towards performances with real musical ambition.</p>
+  </section>
+</BaseLayout>

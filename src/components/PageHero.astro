@@ -1,0 +1,17 @@
+---
+const { eyebrow, title, text, image, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="page-hero__copy">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <p>{text}</p>
+    {ctaLabel && ctaHref && <a class="button button-primary" href={ctaHref}>{ctaLabel}</a>}
+  </div>
+  {image && (
+    <figure class="page-hero__image">
+      <img src={image} alt="" />
+    </figure>
+  )}
+</section>

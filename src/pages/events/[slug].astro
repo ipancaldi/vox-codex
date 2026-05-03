@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+const date = new Intl.DateTimeFormat('en-GB', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(event.data.date);
+---
+
+<BaseLayout title={event.data.title} description={event.data.summary}>
+  <PageHero
+    eyebrow={`${date} - ${event.data.time}`}
+    title={event.data.title}
+    text={`${event.data.summary} Venue: ${event.data.venue}`}
+    image={event.data.image}
+    ctaLabel={event.data.ticketUrl ? 'Book tickets' : undefined}
+    ctaHref={event.data.ticketUrl}
+  />
+  <article class="prose">
+    <Content />
+  </article>
+</BaseLayout>

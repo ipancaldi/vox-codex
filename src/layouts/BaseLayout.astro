@@ -1,0 +1,56 @@
+---
+import { navigation, site } from '../data/site';
+import '../styles/global.css';
+
+const {
+  title = site.name,
+  description = site.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/images/vox_logo.svg" />
+    <title>{title === site.name ? site.name : `${title} | ${site.name}`}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="VOX Holloway home">
+        <img src="/images/vox_logo.svg" alt="" width="72" height="46" />
+        <span>VOX Holloway</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <a class="header-cta" href="/join/">Join</a>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <img src="/images/vox_logo.svg" alt="" width="88" height="56" />
+        <p>VOX Holloway is a community choir in North London, open to new members and built around generous, ambitious singing.</p>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <a href="/join/">Join the choir</a>
+        <a href="/events/">See events</a>
+        <a href="/support/">Support VOX</a>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href="/accessibility/">Accessibility</a>
+        <a href="/safeguarding/">Safeguarding</a>
+        <a href="/privacy/">Privacy</a>
+        <p>N7 Community Choir, registered charity 1150514.</p>
+      </div>
+    </footer>
+  </body>
+</html>

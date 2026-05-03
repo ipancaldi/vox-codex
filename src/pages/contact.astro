@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Contact">
+  <PageHero
+    eyebrow="Contact"
+    title="Ask us anything."
+    text="Questions about joining, events, accessibility, donations, or collaborations can all start with a simple email."
+    image="/images/community-choir.jpg"
+    ctaLabel="Email VOX"
+    ctaHref="mailto:hello@voxholloway.com"
+  />
+  <section class="section section-tight">
+    <div class="grid cards">
+      <article class="info-card">
+        <h3>Joining</h3>
+        <p>Email us and we will point you to the next open rehearsal or joining window.</p>
+      </article>
+      <article class="info-card">
+        <h3>Events</h3>
+        <p>Ask about tickets, access needs, group bookings, or community invitations.</p>
+      </article>
+      <article class="info-card">
+        <h3>Support</h3>
+        <p>Talk to us about donations, sponsorship, volunteering, and partnerships.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

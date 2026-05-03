@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+
+const events = (await getCollection('events'))
+  .filter((event) => event.data.status === 'upcoming')
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+const featuredEvent = events.find((event) => event.data.featured) ?? events[0];
+const stories = await getCollection('stories');
+---
+
+<BaseLayout title="A welcoming community choir in Holloway">
+  <section class="hero">
+    <div class="hero__media">
+      <img src="/images/community-choir.jpg" alt="Illustration of a diverse community choir singing together" />
+    </div>
+    <div class="hero__copy">
+      <p class="eyebrow">North London community choir</p>
+      <h1>Sing with VOX Holloway.</h1>
+      <p>
+        A warm, ambitious choir for people who want to sing, belong, and make something beautiful together.
+        No auditions. No previous choir experience needed.
+      </p>
+      <div class="hero__actions">
+        <a class="button button-primary" href="/join/">Join the choir</a>
+        <a class="button button-secondary" href="/events/">See events</a>
+      </div>
+      <div class="hero__notes" aria-label="Choir highlights">
+        <span>100+ voices</span>
+        <span>Tuesday rehearsals in Holloway</span>
+        <span>Open, friendly, community-led</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <p class="eyebrow">Start here</p>
+      <h2>Three easy ways into VOX.</h2>
+      <p>Whether you want to sing, listen, or support the choir, the site is designed around the things people actually come to do.</p>
+    </div>
+    <div class="grid cards">
+      <article class="info-card">
+        <h3>Join the choir</h3>
+        <p>Come to an open rehearsal, meet the group, and find your voice at your own pace.</p>
+      </article>
+      <article class="info-card">
+        <h3>Come to events</h3>
+        <p>Find upcoming concerts, open rehearsals, community performances, and seasonal projects.</p>
+      </article>
+      <article class="info-card">
+        <h3>Support the work</h3>
+        <p>Buy merch, donate, or help us keep ambitious music open to more singers.</p>
+      </article>
+    </div>
+  </section>
+
+  {featuredEvent && (
+    <section class="feature-band">
+      <div class="feature-band__image">
+        <img src={featuredEvent.data.image} alt="" />
+      </div>
+      <div class="feature-band__copy">
+        <p class="eyebrow">Featured event</p>
+        <h2>{featuredEvent.data.title}</h2>
+        <p>{featuredEvent.data.summary}</p>
+        <div class="action-row">
+          <a class="button button-primary" href={`/events/${featuredEvent.slug}/`}>Event details</a>
+          {featuredEvent.data.ticketUrl && <a class="button button-secondary" href={featuredEvent.data.ticketUrl}>Tickets</a>}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="section-header">
+      <p class="eyebrow">Belonging first</p>
+      <h2>Inclusive, welcoming, and still musically bold.</h2>
+      <p>VOX is built for people who want community and challenge in the same room.</p>
+    </div>
+    <div class="grid cards">
+      <article class="info-card">
+        <h3>No auditions</h3>
+        <p>You do not need previous choir experience or the ability to read music to get started.</p>
+      </article>
+      <article class="info-card">
+        <h3>Real support</h3>
+        <p>Rehearsals are structured, friendly, and designed to help people grow in confidence.</p>
+      </article>
+      <article class="info-card">
+        <h3>Big projects</h3>
+        <p>The choir takes on ambitious repertoire, collaborations, and concerts with heart.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="section-header">
+      <p class="eyebrow">Choir stories</p>
+      <h2>What it feels like to join.</h2>
+    </div>
+    <div class="grid cards">
+      {stories.map((story) => (
+        <article class="story-card">
+          <p>"{story.data.quote}"</p>
+          <h3>{story.data.name}</h3>
+          {story.data.role && <p>{story.data.role}</p>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="feature-band">
+    <div class="feature-band__copy">
+      <p class="eyebrow">Ready when you are</p>
+      <h2>Come and sing with us.</h2>
+      <p>The join journey should be simple: read what to expect, ask a question if you need to, then come along to a rehearsal.</p>
+      <a class="button button-primary" href="/join/">Start joining</a>
+    </div>
+    <div class="feature-band__image">
+      <img src="/images/beach-boys.jpg" alt="" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Support Us">
+  <PageHero
+    eyebrow="Support VOX"
+    title="Help keep community singing open."
+    text="Donations help VOX pay musicians, commission arrangements, offer accessible participation, and keep ambitious singing rooted in the local community."
+    image="/images/beach-boys.jpg"
+    ctaLabel="Make a donation"
+    ctaHref="/merch/"
+  />
+  <section class="section section-tight">
+    <div class="grid cards">
+      <article class="info-card">
+        <h3>Donate</h3>
+        <p>Add a Stripe donation link so supporters can give quickly without needing a full ecommerce setup.</p>
+      </article>
+      <article class="info-card">
+        <h3>Sponsor</h3>
+        <p>Create supporter tiers for local businesses, friends, and audience members who want to help long-term.</p>
+      </article>
+      <article class="info-card">
+        <h3>Volunteer</h3>
+        <p>Invite help with events, front of house, photography, admin, and community outreach.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

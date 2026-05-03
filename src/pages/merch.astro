@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const products = await getCollection('merch');
+---
+
+<BaseLayout title="Merch">
+  <PageHero
+    eyebrow="Merch and support"
+    title="Wear the choir. Support the work."
+    text="Start simple with Stripe payment links for merch, donations, and supporter products. Later this can grow into a full shop if VOX needs stock and variants."
+    image="/images/community-choir.jpg"
+  />
+  <section class="section section-tight">
+    <div class="product-list">
+      {products.map((product) => (
+        <article class="product-card">
+          <img src={product.data.image} alt="" loading="lazy" />
+          <div>
+            <p class="eyebrow">{product.data.price}</p>
+            <h2>{product.data.title}</h2>
+            <p>{product.data.summary}</p>
+            {product.data.stripeUrl && <a class="button button-primary" href={product.data.stripeUrl}>Buy or support</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
